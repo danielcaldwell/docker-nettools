@@ -11,7 +11,7 @@ if [ "$(docker ps -a | grep $IMAGE_NAME:$IMAGE_VERSION)" ]; then
    exit 1
 fi
 
-if [ "$(docker images | grep $IMAGE_NAME:$IMAGE_VERSION)" ]; then
+if [ "$(docker images | grep $IMAGE_NAME | grep $IMAGE_VERSION)" ]; then
    docker rmi $IMAGE_NAME:$IMAGE_VERSION
 fi
 
