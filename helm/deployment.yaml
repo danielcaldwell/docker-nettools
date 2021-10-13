@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: net_tools
+spec:
+  selector:
+    matchLabels:
+      component: net_tools
+  template:
+    metadata:
+      labels:
+        component: net_tools
+    spec:
+      containers:
+      - image: danielcaldwell/nettools:1.0
+        imagePullPolicy: Always
+        name: net_tools
+        command: ["sleep"]
+        args: ["infinity"]
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: registry.gitlab.com
