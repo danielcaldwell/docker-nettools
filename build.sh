@@ -1,6 +1,6 @@
 #!/bin/bash
 IMAGE_NAME=danielcaldwell/nettools
-IMAGE_VERSION=1.0
+IMAGE_VERSION=1.1
 
 if [ "$(docker ps -a | grep $IMAGE_NAME:$IMAGE_VERSION)" ]; then
    echo "Containers exist using the image, unable to build. "
@@ -15,4 +15,4 @@ if [ "$(docker images | grep $IMAGE_NAME | grep $IMAGE_VERSION)" ]; then
    docker rmi $IMAGE_NAME:$IMAGE_VERSION
 fi
 
-docker build --force-rm --tag $IMAGE_NAME:$IMAGE_VERSION .
+docker build --progress=plain  --force-rm --tag $IMAGE_NAME:$IMAGE_VERSION .
