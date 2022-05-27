@@ -11,5 +11,21 @@ checking that your pod can see services.
 
 # Usage for Docker
 
-See instructions here: https://hub.docker.com/r/danielcaldwell/nettools
+This docker image contains network tools. You can use it to learn, debug, and test network connectivity between your docker container, the host machine, other docker containers, and the outside network (whether lan, vlan, or internet). 
+
+## Run the container in the bridge network: 
+```
+docker run -ti --rm danielcaldwell/nettools:1.0 bash
+```
+
+## Run the container in the host network: 
+
+```
+docker run -ti --rm --network host danielcaldwell/nettools:1.0 bash
+```
+
+## Run the container with your ssh files loaded
+```
+docker run -ti --rm --volume ~/.ssh:/root/.ssh danielcaldwell/nettools:1.0 bash
+```
 
